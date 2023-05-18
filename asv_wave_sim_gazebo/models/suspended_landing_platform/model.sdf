@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
-<sdf version='1.7'>
-  <model name='oil_rig'>
-    <link name='link_0'>
+<sdf version='1.6'>
+  <model name='suspended_landing_platform'>
+    <link name='link_suspended_landing_platform'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -12,13 +12,18 @@
           <iyz>0</iyz>
           <izz>0.166667</izz>
         </inertia>
-      </inertial>
-      <pose>0 0 0 0 -0 0</pose>
-      <visual name='visual'>
         <pose>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <pose>0 0 0 0 -0 0</pose>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://oil_rig/meshes/oil_rig.obj</uri>
+            <uri>model://suspended_landing_platform/meshes/suspended_landing_platform.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -28,26 +33,25 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0 0 -0.75 0 -0 0</pose>
         <geometry>
-          <mesh>
-            <uri>model://oil_rig/meshes/oil_rig.obj</uri>
-            <scale>1 1 1</scale>
-          </mesh>
+          <box>
+            <size>1 1 1.5</size>
+          </box>
         </geometry>
         <surface>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>100</mu>
+              <mu2>100</mu2>
               <fdir1>0 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
             </ode>
             <torsional>
               <coefficient>1</coefficient>
-              <patch_radius>0</patch_radius>
-              <surface_radius>0</surface_radius>
+              <patch_radius>1</patch_radius>
+              <surface_radius>1</surface_radius>
               <use_patch_radius>1</use_patch_radius>
               <ode>
                 <slip>0</slip>
@@ -55,7 +59,7 @@
             </torsional>
           </friction>
           <bounce>
-            <restitution_coefficient>0</restitution_coefficient>
+            <restitution_coefficient>1</restitution_coefficient>
             <threshold>1e+06</threshold>
           </bounce>
           <contact>

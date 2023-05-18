@@ -1,0 +1,19 @@
+uav_name:
+  # Terra
+  # id: 2
+  # x: 10.0
+  # y: 90.0
+  # z: 20.0
+  # heading: 0.0
+  # Pier
+  # id: 2
+  # x: 44.5
+  # y: 0.0
+  # z: 4.0
+  # heading: 0.0
+  # Oil  
+  id: 2
+  x: -35.0
+  y: -22.0
+  z: 20.0
+  heading: 0.0

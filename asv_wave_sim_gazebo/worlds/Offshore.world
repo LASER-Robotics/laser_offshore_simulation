@@ -1,10 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <?xml-model href="http://sdformat.org/schemas/root.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <sdf version="1.5">
   <world name="default">
-    <!-- <plugin name="mrs_gazebo_link_attacher_plugin" filename="libMRSGazeboLinkAttacherPlugin.so"/> -->
-    <plugin name="mrs_gazebo_static_transform_republisher_plugin" filename="libMRSGazeboStaticTransformRepublisher.so"/>
-      
+    <!-- <plugin name="mrs_gazebo_link_attacher_plugin"
+    filename="libMRSGazeboLinkAttacherPlugin.so"/> -->
+    <plugin name="mrs_gazebo_static_transform_republisher_plugin"
+      filename="libMRSGazeboStaticTransformRepublisher.so" />
+
     <!-- coordinate system {-->
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
@@ -43,65 +45,550 @@
     <scene>
       <shadows>false</shadows>
       <sky>
-        <clouds/>
+        <clouds />
       </sky>
     </scene>
     <!--}-->
 
     <!-- sun {-->
-
-    <light name='sun' type='directional'>
-      <pose frame=''>0 0 1000 0.4 0.2 0</pose>
-      <diffuse>1 1 1 1</diffuse>
-      <specular>0.6 0.6 0.6 1</specular>
-      <direction>0.1 0.1 -0.9</direction>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>250 250 600 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
       <attenuation>
-        <range>20</range>
-        <constant>0.5</constant>
+        <range>1000</range>
+        <constant>0.9</constant>
         <linear>0.01</linear>
         <quadratic>0.001</quadratic>
       </attenuation>
-      <cast_shadows>1</cast_shadows>
+      <direction>0 0 -1</direction>
     </light>
-
+    <!--}-->
     <!-- World models  -->
 
     <!-- Dunes {-->
 
     <include>
       <uri>model://lake_bottom</uri>
-      <pose frame=''>-130 -130 -18 0 -0 0</pose>
+      <pose>-130 -130 -18 0 -0 0</pose>
     </include>
 
     <!--}-->
 
 
     <!-- Oil rig {-->
-    
+
     <include>
       <uri>model://oil_rig</uri>
-      <pose frame=''>-25 -50 -8 0 1.5708 3.141593</pose>
+      <pose>-40 -50 -8 0 1.5708 3.141593</pose>
     </include>
 
     <!--}-->
 
     <!-- Pier {-->
-    
-    <include>
-      <uri>model://pier</uri>
-      <pose frame=''>40 50 -14 0 0 0</pose>
-    </include>
 
     <include>
-      <uri>model://walk</uri>
-      <pose frame=''>20 -40 3.5 0 0 -1.5708</pose>
+      <uri>model://pier</uri>
+      <pose>40 50 -14 0 0 0</pose>
     </include>
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_1">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>7.0 90 9.7 0.0 -0.0 1.57</pose>
+      </include>
+    </model>
+
+    <model name="takeoff_platform_2">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>10.0 90 9.7 0.0 -0.0 1.57</pose>
+      </include>
+    </model>
+
+    <model name="takeoff_platform_3">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>13.0 90 9.7 0.0 -0.0 1.57</pose>
+      </include>
+    </model>
+
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_pier_1">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>44.5 -42.0 2.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_pier_2">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>44.5 0.0 2.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_pier_3">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>44.5 42.0 2.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_oil_1">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>-35.0 -19.0 13.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_oil_2">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>-35.0 -22.0 13.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE TAKEOFF PLATFORM MODEL -->
+    <model name="takeoff_platform_oil_3">
+      <include>
+        <uri>model://takeoff_platform</uri>
+        <pose>-35.0 -25.0 13.5 0.0 -0.0 0</pose>
+      </include>
+    </model>
+
 
     <!--}-->
 
     <include>
       <uri>model://ocean</uri>
     </include>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 0-->
+    <model name="suspended_landing_platform_0">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>25 -13 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 1-->
+    <model name="suspended_landing_platform_1">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-25 6 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 2-->
+    <model name="suspended_landing_platform_2">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-1 -15 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 3-->
+    <model name="suspended_landing_platform_3">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-7 -5 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 4-->
+    <model name="suspended_landing_platform_4">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-22 -13 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 5-->
+    <model name="suspended_landing_platform_5">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-5 29 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 6-->
+    <model name="suspended_landing_platform_6">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>5 12 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 7-->
+    <model name="suspended_landing_platform_7">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>17 -5 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 8-->
+    <model name="suspended_landing_platform_8">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-30 -11 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 9-->
+    <model name="suspended_landing_platform_9">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>28 22 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 10-->
+    <model name="suspended_landing_platform_10">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>25 8 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 11-->
+    <model name="suspended_landing_platform_11">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>13 25 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 12-->
+    <model name="suspended_landing_platform_12">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-28 -27 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 13-->
+    <model name="suspended_landing_platform_13">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-4 20 1.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 14-->
+    <model name="suspended_landing_platform_14">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>0 -30 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 15-->
+    <model name="suspended_landing_platform_15">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>29 -2 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 16-->
+    <model name="suspended_landing_platform_16">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-17 26 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 17-->
+    <model name="suspended_landing_platform_17">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>0 26 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 18-->
+    <model name="suspended_landing_platform_18">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>-6 -14 1.0 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 19-->
+    <model name="suspended_landing_platform_19">
+      <include>
+        <uri>model://suspended_landing_platform</uri>
+        <pose>2 -24 0.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE LANDING PLATFORM MODEL-->
+    <!-- THE SUSPENDED PLATFORM MODEL 0-->
+    <model name="landing_platform_0">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>61 -39 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 1-->
+    <model name="landing_platform_1">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>40 -45 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 2-->
+    <model name="landing_platform_2">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>65 -42 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 3-->
+    <model name="landing_platform_3">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>23 -39 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 4-->
+    <model name="landing_platform_4">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>51 -43 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 5-->
+    <model name="landing_platform_5">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>58 -43 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 6-->
+    <model name="landing_platform_6">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>67 -39 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 7-->
+    <model name="landing_platform_7">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 -39 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 8-->
+    <model name="landing_platform_8">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>47 -44 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 9-->
+    <model name="landing_platform_9">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>37 -40 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 7-->
+    <model name="landing_platform_10">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>24 -44 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 7-->
+    <model name="landing_platform_11">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>31 -42 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 12-->
+    <model name="landing_platform_12">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>46 6 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 13-->
+    <model name="landing_platform_13">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>46 -14 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 14-->
+    <model name="landing_platform_14">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 40 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 15-->
+    <model name="landing_platform_15">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 -20 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 16-->
+    <model name="landing_platform_16">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 15 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 17-->
+    <model name="landing_platform_17">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>45 -32 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 18-->
+    <model name="landing_platform_18">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 30 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 19-->
+    <model name="landing_platform_19">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 -35 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 20-->
+    <model name="landing_platform_20">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>45 48 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 21-->
+    <model name="landing_platform_21">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 -14 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 22-->
+    <model name="landing_platform_22">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>45 -17 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 23-->
+    <model name="landing_platform_23">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 27 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 24-->
+    <model name="landing_platform_24">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 12 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 25-->
+    <model name="landing_platform_25">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 -6 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 26-->
+    <model name="landing_platform_26">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>46 40 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 27-->
+    <model name="landing_platform_27">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>45 -25 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 28 -->
+    <model name="landing_platform_28">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>44 21 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 29-->
+    <model name="landing_platform_29">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>43 -2 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 30-->
+    <model name="landing_platform_30">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>46 -20 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
+    <!-- THE SUSPENDED PLATFORM MODEL 31-->
+    <model name="landing_platform_31">
+      <include>
+        <uri>model://landing_platform</uri>
+        <pose>46 33 2.5 0 -0 0</pose>
+      </include>
+    </model>
+
 
   </world>
 </sdf>
